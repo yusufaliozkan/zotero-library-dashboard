@@ -86,7 +86,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df = zotero_data(library_id, library_type)
 
         groups = zot.groups()
-        st.write(f"Name: {group['data']['name']}")
         for group in groups:
             st.write(f"Name: {group['data']['name']}")
 
