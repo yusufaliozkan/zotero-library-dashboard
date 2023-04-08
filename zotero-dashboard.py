@@ -28,6 +28,8 @@ st.set_page_config(layout = "wide",
                     initial_sidebar_state="auto") 
 pd.set_option('display.max_colwidth', None)
 
+st.title("Zotero library dashboard")
+
 # Connecting Zotero with API
 # library_id = '2514686'
 library_id = st.text_input('Write the library id here: ')
