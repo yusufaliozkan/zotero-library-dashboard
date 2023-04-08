@@ -30,6 +30,25 @@ pd.set_option('display.max_colwidth', None)
 
 st.title("Zotero library dashboard")
 
+with st.sidebar:
+    st.image(image, width=150)
+    st.sidebar.markdown("# Zotero library dashboard")
+    with st.expander('About'):
+        st.write('''
+        About page
+        ''')
+        components.html(
+        """
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" 
+        src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />
+        © 2022 All rights reserved. This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+        """
+        )
+    with st.expander('Source code'):
+        st.info('''
+        Source code of this app is available [here](https://github.com/YusufAliOzkan/zotero-library-dashboard).
+        ''')
+
 # Connecting Zotero with API
 # library_id = '2514686'
 library_id = st.text_input('Write the library id here: ')
