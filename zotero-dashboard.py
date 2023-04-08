@@ -64,8 +64,6 @@ df = zotero_data(library_id, library_type)
 df['Abstract'] = df['Abstract'].replace(r'^\s*$', np.nan, regex=True) # To replace '' with NaN. Otherwise the code below do not understand the value is nan.
 df['Abstract'] = df['Abstract'].fillna('No abstract')
 
-split_df= pd.DataFrame(df['Col key'].tolist())
-df = pd.concat([df, split_df], axis=1)
 df['Authors'] = df['Authors'].fillna('null')
 
 # Change type name
