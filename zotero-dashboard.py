@@ -114,7 +114,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Date published'] = pd.to_datetime(df['Date published'],utc=True, errors='coerce').dt.tz_convert('Europe/London')
         df['Date year'] = df['Date published'].dt.strftime('%Y')
         df['Date year'] = df['Date year'].fillna('No date')
-        df
+        with st.expander('See dataset'):
+            df
 
         st.subheader('Publications overtime')
         df_year = df['Date year'].value_counts()
