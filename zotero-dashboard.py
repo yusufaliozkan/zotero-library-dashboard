@@ -114,6 +114,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Date published'] = pd.to_datetime(df['Date published'],utc=True, errors='coerce').dt.tz_convert('Europe/London')
         df['Date year'] = df['Date published'].dt.strftime('%Y')
         df['Date year'] = df['Date year'].fillna('No date')
+        df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
         df
 
         df_year = df['Date year'].value_counts()
