@@ -23,6 +23,10 @@ import gsheetsdb as gdb
 import datetime as dt
 import time
 
+st.set_page_config(layout = "wide", 
+                    page_title='Zotero library dashboard',
+                    initial_sidebar_state="auto") 
+pd.set_option('display.max_colwidth', None)
 
 # Connecting Zotero with API
 # library_id = '2514686'
@@ -31,11 +35,6 @@ library_type = 'group'
 api_key = '' # api_key is only needed for private groups and libraries
 
 # Bringing recently changed items
-
-st.set_page_config(layout = "wide", 
-                    page_title='Zotero library dashboard',
-                    initial_sidebar_state="auto") 
-pd.set_option('display.max_colwidth', None)
 
 zot = zotero.Zotero(library_id, library_type)
 
