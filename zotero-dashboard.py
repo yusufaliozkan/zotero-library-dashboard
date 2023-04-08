@@ -112,3 +112,6 @@ if  display:
     # df['Date published'] = df['Date published'].map(lambda x: x.strftime('%d/%m/%Y') if x else 'No date')
 
     df
+
+else:
+    st.error('Write Zotero library ID')
