@@ -31,7 +31,6 @@ pd.set_option('display.max_colwidth', None)
 st.title("Zotero library dashboard")
 
 with st.sidebar:
-    st.image(image, width=150)
     st.sidebar.markdown("# Zotero library dashboard")
     with st.expander('About'):
         st.write('''
