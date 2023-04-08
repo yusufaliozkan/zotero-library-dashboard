@@ -85,6 +85,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
 
         df = zotero_data(library_id, library_type)
 
+        group = zot.groups()
+        group
         @st.cache_data(ttl=600)
         def zotero_data(library_id, library_type):
             group = zot.groups()
