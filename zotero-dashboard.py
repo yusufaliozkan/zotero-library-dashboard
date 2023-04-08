@@ -58,7 +58,7 @@ api_key = '' # api_key is only needed for private groups and libraries
 
 display = st.button('Display dashboard')
 
-with st.spinner('Retrieving data & updating dashboard...'):
+with st.spinner('Creating dashboard. This may take a while if the library contains more items.'):
     if  display:
         zot = zotero.Zotero(library_id, library_type)
 
