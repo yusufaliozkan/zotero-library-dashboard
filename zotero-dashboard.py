@@ -87,7 +87,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
 
         group_info = zot.groups(library_id)
         group_name = group_info['name']
-        
+        st.write(group_name)
+
         df['Abstract'] = df['Abstract'].replace(r'^\s*$', np.nan, regex=True) # To replace '' with NaN. Otherwise the code below do not understand the value is nan.
         df['Abstract'] = df['Abstract'].fillna('No abstract')
 
