@@ -122,7 +122,14 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
         df_year=df_year.sort_values(by='Publication year', ascending=True)
         df_year=df_year.reset_index(drop=True)
-        df_year
+        fig = px.bar(df_year, x='Publication year', y='Count')
+        fig.update_layout(
+            autosize=False,
+            width=1200,
+            height=600,)
+        fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
+        st.plotly_chart(fig, use_container_width = True)
+
 
 
     else:
