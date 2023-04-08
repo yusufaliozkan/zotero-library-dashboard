@@ -111,6 +111,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Date published'] = df['Date published'].fillna('No date')
         # df['Date published'] = df['Date published'].map(lambda x: x.strftime('%d/%m/%Y') if x else 'No date')
 
+        df['Date published'] = pd.to_datetime(df['Date published'],utc=True, errors='coerce').dt.tz_convert('Europe/London')
         df['Date year'] = df['Date published'].dt.strftime('%Y')
         df
 
