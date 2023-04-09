@@ -92,6 +92,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Abstract'] = df['Abstract'].replace(r'^\s*$', np.nan, regex=True) # To replace '' with NaN. Otherwise the code below do not understand the value is nan.
         df['Abstract'] = df['Abstract'].fillna('No abstract')
 
+
         # Change type name
         type_map = {
             'thesis': 'Thesis',
