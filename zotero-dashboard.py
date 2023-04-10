@@ -177,6 +177,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig2.update_xaxes(tickangle=-70)
             col2.plotly_chart(fig2, use_container_width = True)
 
+
         df_journal = df.loc[df['Publication type']=='Journal article']
         df_journal = pd.DataFrame(df_journal['Journal'].value_counts())
         df_journal = df_journal.sort_values(['Journal'], ascending=[False])
@@ -191,6 +192,21 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             showlegend=False)
         fig.update_xaxes(tickangle=-70)
         fig.update_layout(title={'text':'Journals', 'y':0.95, 'x':0.4, 'yanchor':'top'})
+        st.plotly_chart(fig, use_container_width = True)
+
+        df_publisher = pd.DataFrame(df['Publisher'].value_counts())
+        df_publisher = df_publisher.sort_values(['Publisher'], ascending=[False])
+        df_publisher = df_publisher.reset_index()
+        df_publisher = df_publisher.rename(columns={'index':'Publisher','Publisher':'Count'})
+
+        fig = px.bar(df_publisher, x='Publisher', y='Count', color='Publisher')
+        fig.update_layout(
+            autosize=False,
+            width=1200,
+            height=700,
+            showlegend=False)
+        fig.update_xaxes(tickangle=-70)
+        fig.update_layout(title={'text':'Publishers', 'y':0.95, 'x':0.4, 'yanchor':'top'})
         st.plotly_chart(fig, use_container_width = True)
 
     else:
