@@ -127,9 +127,9 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         with st.expander('See dataset'):
             df
 
+        st.subheader('Publications by type')
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader('Publications by type')
             df_types = pd.DataFrame(df['Publication type'].value_counts())
             df_types = df_types.sort_values(['Publication type'], ascending=[False])
             df_types=df_types.reset_index()
@@ -148,9 +148,9 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
             col2.plotly_chart(fig, use_container_width = True)
 
+        st.subheader('Publications overtime')
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader('Publications overtime')
             df_year = df['Date year'].value_counts()
             df_year = df_year.reset_index()
             df_year=df_year.rename(columns={'index':'Publication year','Date year':'Count'})
