@@ -182,7 +182,16 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_journal = df_journal.sort_values(['Journal'], ascending=[False])
         df_journal = df_journal.reset_index()
         df_journal = df_journal.rename(columns={'index':'Journal','Journal':'Count'})
-        df_journal
+
+        fig = px.bar(df_journal, x='Journal', y='Count', color='Journal', log_y=True)
+        fig.update_layout(
+            autosize=False,
+            width=1200,
+            height=700,
+            showlegend=False)
+        fig.update_xaxes(tickangle=-70)
+        fig.update_layout(title={'text':'Top ' + str(number2) + ' journals that publish intelligence articles (in log scale)', 'y':0.95, 'x':0.4, 'yanchor':'top'})
+        st.plotly_chart(fig, use_container_width = True)
 
     else:
         st.error('Write Zotero library ID')
