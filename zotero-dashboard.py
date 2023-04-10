@@ -148,30 +148,33 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
             col2.plotly_chart(fig, use_container_width = True)
 
-        st.subheader('Publications overtime')
-        df_year = df['Date year'].value_counts()
-        df_year = df_year.reset_index()
-        df_year=df_year.rename(columns={'index':'Publication year','Date year':'Count'})
-        df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
-        df_year=df_year.sort_values(by='Publication year', ascending=True)
-        df_year=df_year.reset_index(drop=True)
-        fig = px.bar(df_year, x='Publication year', y='Count')
-        fig.update_layout(
-            autosize=False,
-            width=1200,
-            height=600,)
-        fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
-        st.plotly_chart(fig, use_container_width = True)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader('Publications overtime')
+            df_year = df['Date year'].value_counts()
+            df_year = df_year.reset_index()
+            df_year=df_year.rename(columns={'index':'Publication year','Date year':'Count'})
+            df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
+            df_year=df_year.sort_values(by='Publication year', ascending=True)
+            df_year=df_year.reset_index(drop=True)
+            fig = px.bar(df_year, x='Publication year', y='Count')
+            fig.update_layout(
+                autosize=False,
+                width=1200,
+                height=600,)
+            fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
+            col1.plotly_chart(fig, use_container_width = True)
 
-        df_year['Sum'] = df_year['Count'].cumsum()
-        fig2 = px.line(df_year, x='Publication year', y='Sum')
-        fig2.update_layout(title={'text':'All items in the library by publication year (cumulative sum)', 'y':0.95, 'x':0.5, 'yanchor':'top'})
-        fig2.update_layout(
-            autosize=False,
-            width=1200,
-            height=600,)
-        fig2.update_xaxes(tickangle=-70)
-        st.plotly_chart(fig2, use_container_width = True)
+        with col2:
+            df_year['Sum'] = df_year['Count'].cumsum()
+            fig2 = px.line(df_year, x='Publication year', y='Sum')
+            fig2.update_layout(title={'text':'All items in the library by publication year (cumulative sum)', 'y':0.95, 'x':0.5, 'yanchor':'top'})
+            fig2.update_layout(
+                autosize=False,
+                width=1200,
+                height=600,)
+            fig2.update_xaxes(tickangle=-70)
+            col2.plotly_chart(fig2, use_container_width = True)
 
     else:
         st.error('Write Zotero library ID')
