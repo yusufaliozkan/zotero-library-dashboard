@@ -62,7 +62,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
     if  display:
         zot = zotero.Zotero(library_id, library_type)
 
-        @st.cache_data(ttl=6000)
+        @st.cache_data(ttl=60000)
         def zotero_data(library_id, library_type):
             items = zot.everything(zot.top())
 
