@@ -92,7 +92,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Abstract'] = df['Abstract'].fillna('No abstract')
 
         lib_name = df.iloc[:,0].values[0]
-        st.subheader('Dashboard: ' + lib_name)
+        st.subheader(lib_name + ' group library dashboard')
 
 
         # Change type name
