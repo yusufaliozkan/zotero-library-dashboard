@@ -142,23 +142,27 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
         st.plotly_chart(fig, use_container_width = True)
 
-        df_types = pd.DataFrame(df['Publication type'].value_counts())
-        df_types = df_types.sort_values(['Publication type'], ascending=[False])
-        df_types=df_types.reset_index()
-        df_types = df_types.rename(columns={'index':'Publication type','Publication type':'Count'})
+        col1, col2 = st.columns(2)
 
-        fig = px.pie(df_types, values='Count', names='Publication type')
-        fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
-        st.plotly_chart(fig, use_container_width = True)
+        with col1:
+            df_types = pd.DataFrame(df['Publication type'].value_counts())
+            df_types = df_types.sort_values(['Publication type'], ascending=[False])
+            df_types=df_types.reset_index()
+            df_types = df_types.rename(columns={'index':'Publication type','Publication type':'Count'})
 
-        fig = px.bar(df_types, x='Publication type', y='Count', color='Publication type')
-        fig.update_layout(
-            autosize=False,
-            width=1200,
-            height=600,)
-        fig.update_xaxes(tickangle=-70)
-        fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
-        st.plotly_chart(fig, use_container_width = True)
+            fig = px.pie(df_types, values='Count', names='Publication type')
+            fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
+            col1.plotly_chart(fig, use_container_width = True)
+
+        with col2:
+            fig = px.bar(df_types, x='Publication type', y='Count', color='Publication type')
+            fig.update_layout(
+                autosize=False,
+                width=1200,
+                height=600,)
+            fig.update_xaxes(tickangle=-70)
+            fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
+            col2.plotly_chart(fig, use_container_width = True)
 
     else:
         st.error('Write Zotero library ID')
