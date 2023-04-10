@@ -73,7 +73,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             items = zot.everything(zot.top())
 
             data=[]
-            columns = ['Title','Publication type', 'Abstract', 'Date published', 'Publisher', 'Journal']
+            columns = ['Library', 'Title','Publication type', 'Abstract', 'Date published', 'Publisher', 'Journal']
 
             for item in items:
                 creators = item['data']['creators']
