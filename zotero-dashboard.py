@@ -151,10 +151,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
         st.plotly_chart(fig, use_container_width = True)
 
-        fig = px.pie(df_types, values='Count', names='Publication type')
-        fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
-        st.plotly_chart(fig, use_container_width = True)
-
         fig = px.bar(df_types, x='Publication type', y='Count', color='Publication type')
         fig.update_layout(
             autosize=False,
