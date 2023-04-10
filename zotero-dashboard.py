@@ -67,7 +67,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         @st.cache_data(ttl=600)
         def zotero_data(library_id, library_type):
             items = zot.everything(zot.top())
-            items
 
             data=[]
             columns = ['Library', 'Link', 'Title','Publication type', 'Abstract', 'Date published', 'Publisher', 'Journal']
