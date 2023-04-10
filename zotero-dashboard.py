@@ -162,7 +162,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             height=600,)
         fig.update_xaxes(tickangle=-70)
         fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
-        col1.plotly_chart(fig, use_container_width = True)
+        st.plotly_chart(fig, use_container_width = True)
 
     else:
         st.error('Write Zotero library ID')
