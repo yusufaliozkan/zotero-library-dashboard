@@ -185,7 +185,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             df_journal = df_journal.reset_index()
             df_journal = df_journal.rename(columns={'index':'Journal','Journal':'Count'})
 
-            fig = px.bar(df_journal, x='Journal', y='Count', color='Journal')
+            fig = px.bar(df_journal.head(15), x='Journal', y='Count', color='Journal')
             fig.update_layout(
                 autosize=False,
                 width=1200,
