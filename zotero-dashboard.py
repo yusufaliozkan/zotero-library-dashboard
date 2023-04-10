@@ -56,10 +56,6 @@ api_key = '' # api_key is only needed for private groups and libraries
 
 zot = zotero.Zotero(library_id, 'group')
 
-
-items = zot.top(limit=15)
-items
-
 # Bringing recently changed items 
 
 display = st.button('Display dashboard')
