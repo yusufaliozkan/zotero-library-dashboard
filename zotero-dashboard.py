@@ -70,13 +70,14 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             items
 
             data=[]
-            columns = ['Library', 'Title','Publication type', 'Abstract', 'Date published', 'Publisher', 'Journal']
+            columns = ['Library', 'Link', 'Title','Publication type', 'Abstract', 'Date published', 'Publisher', 'Journal']
 
             for item in items:
                 creators = item['data']['creators']
                 creators_str = ", ".join([creator.get('firstName', '') + ' ' + creator.get('lastName', '') for creator in creators])
                 data.append((
                     item['library']['name'],
+                    item['library']['links']['href'],
                     item['data']['title'], 
                     item['data']['itemType'], 
                     item['data']['abstractNote'], 
