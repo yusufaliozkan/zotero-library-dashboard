@@ -177,7 +177,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig2.update_xaxes(tickangle=-70)
             col2.plotly_chart(fig2, use_container_width = True)
 
-        df_journal = df.loc[df_csv['Publication type']=='Journal article']
+        df_journal = df.loc[df['Publication type']=='Journal article']
         df_journal = pd.DataFrame(df_journal['Journal'].value_counts())
         df_journal = df_journal.sort_values(['Journal'], ascending=[False])
         df_journal = df_journal.reset_index()
