@@ -54,8 +54,6 @@ library_id = st.text_input('Write the library id here: ')
 library_type = 'group'
 api_key = '' # api_key is only needed for private groups and libraries
 
-zot = zotero.Zotero(library_id, 'group')
-
 # Bringing recently changed items 
 
 display = st.button('Display dashboard')
