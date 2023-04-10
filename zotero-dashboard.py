@@ -128,8 +128,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             df
 
         col1, col2 = st.columns(2)
-        st.subheader('Publications by type')
         with col1:
+            st.subheader('Publications by type')
             df_types = pd.DataFrame(df['Publication type'].value_counts())
             df_types = df_types.sort_values(['Publication type'], ascending=[False])
             df_types=df_types.reset_index()
