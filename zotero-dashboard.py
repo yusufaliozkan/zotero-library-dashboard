@@ -77,7 +77,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
                 creators_str = ", ".join([creator.get('firstName', '') + ' ' + creator.get('lastName', '') for creator in creators])
                 data.append((
                     item['library']['name'],
-                    item['library']['links']['href'],
+                    item['library']['links']['alternate']['href'],
                     item['data']['title'], 
                     item['data']['itemType'], 
                     item['data']['abstractNote'], 
