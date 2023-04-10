@@ -177,6 +177,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig2.update_xaxes(tickangle=-70)
             col2.plotly_chart(fig2, use_container_width = True)
 
+        st.write('---')
+        st.subheader('Journals and publishers')
         col1, col2 = st.columns(2)
         with col1:
             df_journal = df.loc[df['Publication type']=='Journal article']
