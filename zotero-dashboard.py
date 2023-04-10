@@ -148,6 +148,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
             col2.plotly_chart(fig, use_container_width = True)
 
+        st.write('---')
         st.subheader('Publications overtime')
         col1, col2 = st.columns(2)
         with col1:
