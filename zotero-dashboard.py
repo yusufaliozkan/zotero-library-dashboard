@@ -91,7 +91,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df['Abstract'] = df['Abstract'].replace(r'^\s*$', np.nan, regex=True) # To replace '' with NaN. Otherwise the code below do not understand the value is nan.
         df['Abstract'] = df['Abstract'].fillna('No abstract')
 
-        lib_name = df.iloc[:,0]
+        lib_name = df.iloc[:,0].values[0]
         st.write(lib_name)
 
 
