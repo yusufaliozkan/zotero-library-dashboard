@@ -64,7 +64,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
     if  display:
         zot = zotero.Zotero(library_id, library_type)
 
-        @st.cache_data(ttl=600)
+        @st.cache_data(ttl=6000)
         def zotero_data(library_id, library_type):
             items = zot.everything(zot.top())
 
@@ -142,7 +142,14 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
         st.plotly_chart(fig, use_container_width = True)
 
+        df_types = pd.DataFrame(df['Publication type'].value_counts())
+        df_types = df_types.sort_values(['Publication type'], ascending=[False])
+        df_types=df_types.reset_index()
+        df_types = df_types.rename(columns={'index':'Publication type','Publication type':'Count'})
 
+        fig = px.pie(df_types, values='Count', names='Publication type')
+        fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
+        col2.plotly_chart(fig, use_container_width = True)
 
     else:
         st.error('Write Zotero library ID')
