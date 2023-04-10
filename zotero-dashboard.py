@@ -91,10 +91,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
 
         df = zotero_data(library_id, library_type)
 
-        groups = zot.groups()
-        for group in groups:
-            st.write(f"Name: {group['data']['name']}")
-
         df['Abstract'] = df['Abstract'].replace(r'^\s*$', np.nan, regex=True) # To replace '' with NaN. Otherwise the code below do not understand the value is nan.
         df['Abstract'] = df['Abstract'].fillna('No abstract')
 
