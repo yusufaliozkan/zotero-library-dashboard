@@ -151,5 +151,18 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
         st.plotly_chart(fig, use_container_width = True)
 
+        fig = px.pie(df_types, values='Count', names='Publication type')
+        fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
+        st.plotly_chart(fig, use_container_width = True)
+
+        fig = px.bar(df_types, x='Publication type', y='Count', color='Publication type')
+        fig.update_layout(
+            autosize=False,
+            width=1200,
+            height=600,)
+        fig.update_xaxes(tickangle=-70)
+        fig.update_layout(title={'text':'Item types in log scale', 'y':0.95, 'x':0.4, 'yanchor':'top'})
+        col1.plotly_chart(fig, use_container_width = True)
+
     else:
         st.error('Write Zotero library ID')
