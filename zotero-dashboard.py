@@ -247,13 +247,14 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_countries = pd.DataFrame({'Country': list(found_countries.keys()), 'Count': list(found_countries.values())})
         
         if df_countries.empty:
-            st.write('bos')
+            st.write('No country mentioned in title')
 
-        fig = px.choropleth(df_countries, locations='Country', locationmode='country names', color='Count', 
-                    title='Country mentions in titles', color_continuous_scale='Viridis',
-                    width=900, height=700) # Adjust the size of the map here
-        # Display the map
-        fig.show()
-        st.plotly_chart(fig, use_container_width=True) 
+        else:
+            fig = px.choropleth(df_countries, locations='Country', locationmode='country names', color='Count', 
+                        title='Country mentions in titles', color_continuous_scale='Viridis',
+                        width=900, height=700) # Adjust the size of the map here
+            # Display the map
+            fig.show()
+            st.plotly_chart(fig, use_container_width=True) 
     else:
         st.error('Write Zotero library ID')
