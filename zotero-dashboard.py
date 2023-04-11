@@ -266,5 +266,33 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
 
         st.write('---')
         st.subheader('Named Entity Recognition analysis')
+        nltk.download('punkt')
+        nltk.download('averaged_perceptron_tagger')
+        nltk.download('maxent_ne_chunker')
+        nltk.download('words')
+        nlp = spacy.load("en_core_web_sm")
+        ruler = nlp.add_pipe("entity_ruler")
+        patterns = [{"label": "ORG", "pattern": "MI6"}]
+        ruler.add_patterns(patterns)
+        def extract_entities(text):
+            doc = nlp(text)
+            orgs = []
+            gpes = []
+            people = []
+            for entity in doc.ents:
+                if entity.label_ == 'ORG':
+                    orgs.append(entity.text)
+                elif entity.label_ == 'GPE':
+                    gpes.append(entity.text)
+                elif entity.label_ == 'PERSON':
+                    people.append(entity.text)
+            return pd.Series({'ORG': orgs, 'GPE': gpes, 'PERSON': people})
+        df_title = df[['Title']].copy()
+        df_title = df_title.rename(columns={'Title':'Text'})
+        df_abstract = df[['Abstract']].copy()
+        df_abstract = df_abstract.rename(columns={'Abstract':'Text'})
+        df_one = pd.concat([df_title, df_abstract], ignore_index=True)
+        df_one['Text'] = df_one['Text'].fillna('')
+        
     else:
         st.error('Write Zotero library ID')
