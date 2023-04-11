@@ -205,7 +205,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             df_publisher = df_publisher.sort_values(['Publisher'], ascending=[False])
             df_publisher = df_publisher.reset_index()
             df_publisher = df_publisher.rename(columns={'index':'Publisher','Publisher':'Count'})
-            df_publisher = df_publisher.dropna()
+            df_publisher = df_publisher.fillna('s')
             df_publisher
 
             fig = px.bar(df_publisher.head(15), x='Publisher', y='Count', color='Publisher')
