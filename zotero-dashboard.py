@@ -331,8 +331,18 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
         gpe_counts.reset_index(drop=True)
-        st.write('#')
         gpe_counts
+
+        df_one_p = df_one.copy()
+        df_one_p = df_one[['Text', 'PERSON']]
+        # df_one_p = df_one_g.fillna('')
+        df_one_p = df_one_p.drop_duplicates(subset=['Text', 'PERSON'])
+        person_counts = df_one_p['PERSON'].value_counts().reset_index()
+        person_counts.columns = ['PERSON', 'count']
+        person_counts = person_counts.groupby('PERSON').sum().reset_index()
+        person_counts.sort_values('count', ascending=False, inplace=True)
+        person_counts = person_counts.reset_index(drop=True)
+        person_counts
         
     else:
         st.error('Write Zotero library ID')
