@@ -270,6 +270,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         nltk.download('averaged_perceptron_tagger')
         nltk.download('maxent_ne_chunker')
         nltk.download('words')
+        spacy.cli.download("en_core_web_sm")
         nlp = spacy.load("en_core_web_sm")
         ruler = nlp.add_pipe("entity_ruler")
         patterns = [{"label": "ORG", "pattern": "MI6"}]
