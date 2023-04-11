@@ -36,7 +36,7 @@ pd.set_option('display.max_colwidth', None)
 
 st.title("Zotero library dashboard")
 st.write('View your Zotero library with visuals! All you need to do is to find the Zotero group library (or group ID) and paste it below. Note that this app only displays group libraries that are publicly available.')
-
+ 
 with st.sidebar:
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Zotero_logo.svg/1920px-Zotero_logo.svg.png'
     st.image(image, width=150)
