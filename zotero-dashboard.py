@@ -23,7 +23,9 @@ import gsheetsdb as gdb
 import datetime as dt
 import time
 import pycountry
-
+import spacy
+import ast
+from spacy.pipeline import EntityRecognizer
 
 st.set_page_config(layout = "wide", 
                     page_title='Zotero library dashboard',
