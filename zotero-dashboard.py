@@ -194,6 +194,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             df_journal = df_journal.reset_index()
             df_journal = df_journal.rename(columns={'index':'Journal','Journal':'Count'})
             df_journal = df_journal.dropna()
+            df_journal['Journal'] = df_journal['Journal'].str[:50]
 
             fig = px.bar(df_journal.head(15), x='Journal', y='Count', color='Journal')
             fig.update_layout(
