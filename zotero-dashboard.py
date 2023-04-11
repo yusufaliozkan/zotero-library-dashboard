@@ -471,6 +471,9 @@ except pyzotero.zotero_errors.HTTPError as e:
 
 except pyzotero.zotero_errors.UserNotAuthorised as e:
     st.error("You are not authorized to access this library. Please check your credentials and try again.")
+
+except pyzotero.zotero_errors.MissingCredentials as e:
+    st.error("Credentials are missing. Please provide your API key and User ID to access your Zotero library.")
 components.html(
 """
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" 
