@@ -72,7 +72,7 @@ try:
         st.caption('Write 2514686 as an example.')
         library_type = 'group'
     if not library_type:
-        st.errot('Please enter a valid input!')
+        st.error('Please enter a valid input!')
     api_key = '' # api_key is only needed for private groups and libraries
 
     # Bringing recently changed items 
