@@ -60,13 +60,14 @@ try:
     choice = st.radio('Display dashboard by using: ', ('Group library link', 'Group library ID'))
 
     if choice == 'Group library link':
+        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group)')
         library_id = st.text_input('Write the group library link: ')
         df = pd.DataFrame({'link': [library_id]})
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
 
     else: 
         library_id = st.text_input('Write the library id here: ')
-        # library_id = library_id.replace(' ', '')
+        library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
     library_type = 'group'
     api_key = '' # api_key is only needed for private groups and libraries
