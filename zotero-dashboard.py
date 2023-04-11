@@ -291,6 +291,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             return pd.Series({'ORG': orgs, 'GPE': gpes, 'PERSON': people})
         df_title = df[['Title']].copy()
         df_title = df_title.rename(columns={'Title':'Text'})
+        df_title
         df_abstract = df[['Abstract']].copy()
         df_abstract = df_abstract.rename(columns={'Abstract':'Text'})
         df_one = pd.concat([df_title, df_abstract], ignore_index=True)
