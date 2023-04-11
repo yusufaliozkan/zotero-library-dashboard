@@ -467,9 +467,7 @@ try:
             st.error('Write Zotero library link or ID')
 
 except pyzotero.zotero_errors.HTTPError as e:
-    st.error("An error occurred: {}".format(e))
-
-    # st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.".format(e))
+    st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.".format(e))
 
 components.html(
 """
