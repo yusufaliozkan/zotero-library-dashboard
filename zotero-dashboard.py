@@ -67,13 +67,13 @@ try:
 
     if choice == 'Group library link':
         st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try the following link as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
-        library_id = st.text_input('Write the group library link: ')
+        library_id = st.text_input('Group library link: ')
         df = pd.DataFrame({'link': [library_id]})
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
         library_type = 'group'
 
     else: 
-        library_id = st.text_input('Write the library id here: ')
+        library_id = st.text_input('Group library id: ')
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
         library_type = 'group'
