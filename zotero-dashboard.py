@@ -463,15 +463,10 @@ try:
                 fig.update_xaxes(tickangle=-65)
                 col3.plotly_chart(fig, use_container_width=True)
             
-
-
-
 except pyzotero.zotero_errors.HTTPError as e:
     st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.".format(e))
-
 except pyzotero.zotero_errors.UserNotAuthorised as e:
     st.error("You are not authorized to access this library. Please check your credentials and try again.")
-
 except pyzotero.zotero_errors.MissingCredentials as e:
     st.error("Credentials are missing. Please provide the Zotero group library ID.")
 except pyzotero.zotero_errors.ResourceNotFound:
