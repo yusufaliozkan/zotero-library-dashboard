@@ -59,6 +59,7 @@ choice = st.radio('Display dashboard by: ', ('Group library link', 'Group librar
 
 if choice == 'Group library link':
     library_id = st.text_input('Write the group library link: ')
+    library_id = library_id.str.extract(r'groups/(\d+)/')
 
 else: 
     library_id = st.text_input('Write the library id here: ')
