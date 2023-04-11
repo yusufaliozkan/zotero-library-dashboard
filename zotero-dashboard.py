@@ -71,8 +71,7 @@ try:
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
         library_type = 'group'
-        if not library_id:
-            st.error('Please enter a valid input!')
+
     api_key = '' # api_key is only needed for private groups and libraries
 
     # Bringing recently changed items 
