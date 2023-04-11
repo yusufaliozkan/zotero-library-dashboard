@@ -53,6 +53,7 @@ with st.sidebar:
 # Connecting Zotero with API
 # library_id = '2514686'
 library_id = st.text_input('Write the library id here: ')
+st.caption('Write 2514686 as an example.')
 library_type = 'group'
 api_key = '' # api_key is only needed for private groups and libraries
 
