@@ -469,6 +469,8 @@ try:
 except pyzotero.zotero_errors.HTTPError as e:
     st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.".format(e))
 
+except pyzotero.zotero_errors.UserNotAuthorised as e:
+    st.error("You are not authorized to access this library. Please check your credentials and try again.")
 components.html(
 """
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" 
