@@ -55,7 +55,7 @@ with st.sidebar:
 # Connecting Zotero with API
 # library_id = '2514686'
 
-choice = st.radio('Display dashboard by: ', 'Group library link', 'Group library ID')
+choice = st.radio('Display dashboard by: ', ('Group library link', 'Group library ID'))
 
 library_id = st.text_input('Write the library id here: ')
 library_id = library_id.replace(' ', '')
