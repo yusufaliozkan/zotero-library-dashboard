@@ -377,4 +377,4 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
 
         
     else:
-        st.error('Write Zotero library ID')
+        st.error('Write Zotero library link or ID')
