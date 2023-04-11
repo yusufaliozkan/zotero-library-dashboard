@@ -74,6 +74,7 @@ try:
 
     else: 
         library_id = st.number_input('Group library id: ', value=0)
+        library_id = str(library_id)
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
         library_type = 'group'
