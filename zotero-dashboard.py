@@ -328,10 +328,10 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             'Ottoman Empire' : 'Turkey'
         }
         gpe_counts['GPE'] =gpe_counts['GPE'].replace(mapping_locations)
-        gpe_counts
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
         gpe_counts.reset_index(drop=True)
+        st.write('#')
         gpe_counts
         
     else:
