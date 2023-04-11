@@ -276,6 +276,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         ruler = nlp.add_pipe("entity_ruler")
         patterns = [{"label": "ORG", "pattern": "MI6"}]
         ruler.add_patterns(patterns)
+        @st.cache_data(ttl=6000)
         def extract_entities(text):
             doc = nlp(text)
             orgs = []
@@ -291,7 +292,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             return pd.Series({'ORG': orgs, 'GPE': gpes, 'PERSON': people})
         df_title = df[['Title']].copy()
         df_title = df_title.rename(columns={'Title':'Text'})
-        df_title
         df_abstract = df[['Abstract']].copy()
         df_abstract = df_abstract.rename(columns={'Abstract':'Text'})
         df_one = pd.concat([df_title, df_abstract], ignore_index=True)
@@ -300,6 +300,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_one = df_one.explode('GPE').reset_index(drop=True)
         df_one = df_one.explode('ORG').reset_index(drop=True)
         df_one = df_one.explode('PERSON').reset_index(drop=True)
+        df_one
 
         df_one_g = df_one.copy()
         df_one_g = df_one[['Text', 'GPE']]
