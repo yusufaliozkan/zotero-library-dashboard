@@ -64,7 +64,7 @@ if choice == 'Group library link':
 
 else: 
     library_id = st.text_input('Write the library id here: ')
-library_id = library_id.replace(' ', '')
+    library_id = library_id.replace(' ', '')
 st.caption('Write 2514686 as an example.')
 library_type = 'group'
 api_key = '' # api_key is only needed for private groups and libraries
