@@ -64,12 +64,13 @@ try:
         library_id = st.text_input('Write the group library link: ')
         df = pd.DataFrame({'link': [library_id]})
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
+        library_type = 'group'
 
     else: 
         library_id = st.text_input('Write the library id here: ')
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
-    library_type = 'group'
+        library_type = 'group'
     api_key = '' # api_key is only needed for private groups and libraries
 
     # Bringing recently changed items 
