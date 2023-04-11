@@ -59,7 +59,8 @@ choice = st.radio('Display dashboard by: ', ('Group library link', 'Group librar
 
 if choice == 'Group library link':
     library_id = st.text_input('Write the group library link: ')
-    library_id = library_id.str.extract(r'groups/(\d+)/')
+    df = pd.DataFrame({'link': [library_id]})
+    library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
 
 else: 
     library_id = st.text_input('Write the library id here: ')
