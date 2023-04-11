@@ -331,6 +331,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         gpe_counts
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
+        gpe_counts
         gpe_counts.head(15)
         
     else:
