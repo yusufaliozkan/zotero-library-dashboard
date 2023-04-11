@@ -306,10 +306,31 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_one_g = df_one_g.drop_duplicates(subset=['Text', 'GPE'])
         gpe_counts = df_one_g['GPE'].value_counts().reset_index()
         gpe_counts.columns = ['GPE', 'count']
-        gpe_counts
+        mapping_locations = {
+            'the United States': 'USA',
+            'The United States': 'USA',
+            'US': 'USA',
+            'U.S.': 'USA',
+            'United States' : 'USA',
+            'America' : 'USA',
+            'the United States of America' : 'USA',
+            'Britain' : 'UK',
+            'the United Kingdom': 'UK',
+            'U.K.' : 'UK',
+            'Global Britain' : 'UK',
+            'United Kingdom' : 'UK', 
+            'the Soviet Union' : 'Russia',
+            'The Soviet Union' : 'Russia',
+            'USSR' : 'Russia',
+            'Ukraine - Perspective' : 'Ukraine',
+            'Ukrainian' : 'Ukraine',
+            'Great Britain' : 'UK',
+            'Ottoman Empire' : 'Turkey'
+        }
+        gpe_counts['GPE'] =gpe_counts['GPE'].replace(mapping_locations)
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
-        gpe_counts = gpe_counts.reset_index()
+        gpe_counts = gpe_counts.reset_index(drop=True)
         gpe_counts.head(15)
         
     else:
