@@ -113,7 +113,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             'document' : 'Document',
             'film' : 'Film',
             'presentation' : 'Presentation',
-            'conferencePaper' : 'Conference paper'
+            'conferencePaper' : 'Conference paper',
+            'manuscript' : 'Manuscript'
         }
         df['Publication type'] = df['Publication type'].replace(type_map)
 
