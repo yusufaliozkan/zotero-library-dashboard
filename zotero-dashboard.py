@@ -331,7 +331,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
         gpe_counts.reset_index(drop=True)
-        gpe_counts
 
         df_one_p = df_one.copy()
         df_one_p = df_one[['Text', 'PERSON']]
@@ -342,7 +341,6 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         person_counts = person_counts.groupby('PERSON').sum().reset_index()
         person_counts.sort_values('count', ascending=False, inplace=True)
         person_counts = person_counts.reset_index(drop=True)
-        person_counts
 
         df_one_o = df_one.copy()
         df_one_o = df_one[['Text', 'ORG']]
@@ -353,7 +351,21 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         org_counts = org_counts.groupby('ORG').sum().reset_index()
         org_counts.sort_values('count', ascending=False, inplace=True)
         org_counts = org_counts.reset_index(drop=True)
-        org_counts
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            fig = px.bar(gpe_counts.head(15), x='GPE', y='count', height=600, title="Top 15 locations mentioned in title & abstract")
+            fig.update_xaxes(tickangle=-65)
+            col1.plotly_chart(fig, use_container_width=True)
+        with col2:
+            fig = px.bar(person_counts.head(15), x='PERSON', y='count', height=600, title="Top 15 person mentioned in title & abstract")
+            fig.update_xaxes(tickangle=-65)
+            col2.plotly_chart(fig, use_container_width=True)
+        with col3:
+            fig = px.bar(org_counts.head(15), x='ORG', y='count', height=600, title="Top 15 organisations mentioned in title & abstract")
+            fig.update_xaxes(tickangle=-65)
+            col3.plotly_chart(fig, use_container_width=True)
+
         
     else:
         st.error('Write Zotero library ID')
