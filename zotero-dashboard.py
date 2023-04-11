@@ -259,5 +259,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             # Display the map
             fig.show()
             st.plotly_chart(fig, use_container_width=True) 
+
+        st.write('---')
+        st.subheader('Named Entity Recognition analysis')
     else:
         st.error('Write Zotero library ID')
