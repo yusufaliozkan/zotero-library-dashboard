@@ -475,8 +475,8 @@ except pyzotero.zotero_errors.UserNotAuthorised as e:
 except pyzotero.zotero_errors.MissingCredentials as e:
     st.error("Credentials are missing. Please provide the Zotero group library ID.")
 except pyzotero.zotero_errors.ResourceNotFound:
-    st.error("The resource was not found. Please check your input.")
-    
+    st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.")
+
 components.html(
 """
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" 
