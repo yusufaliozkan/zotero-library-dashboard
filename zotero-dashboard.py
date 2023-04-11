@@ -22,6 +22,8 @@ from gsheetsdb import connect
 import gsheetsdb as gdb
 import datetime as dt
 import time
+import pycountry
+
 
 st.set_page_config(layout = "wide", 
                     page_title='Zotero library dashboard',
