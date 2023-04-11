@@ -57,7 +57,11 @@ with st.sidebar:
 
 choice = st.radio('Display dashboard by: ', ('Group library link', 'Group library ID'))
 
-library_id = st.text_input('Write the library id here: ')
+if choice == 'Group library link':
+    library_id = st.text_input('Write the group library link: ')
+
+else: 
+    library_id = st.text_input('Write the library id here: ')
 library_id = library_id.replace(' ', '')
 st.caption('Write 2514686 as an example.')
 library_type = 'group'
