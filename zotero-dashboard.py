@@ -35,6 +35,7 @@ st.set_page_config(layout = "wide",
 pd.set_option('display.max_colwidth', None)
 
 st.title("Zotero library dashboard")
+st.write('View your Zotero library with visuals!')
 
 with st.sidebar:
     image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Zotero_logo.svg/1920px-Zotero_logo.svg.png'
@@ -65,7 +66,7 @@ try:
     choice = st.radio('Display dashboard by using: ', ('Group library link', 'Group library ID'))
 
     if choice == 'Group library link':
-        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try this as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
+        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try the following link as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
         library_id = st.text_input('Write the group library link: ')
         df = pd.DataFrame({'link': [library_id]})
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
