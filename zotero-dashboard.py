@@ -353,7 +353,7 @@ try:
                 plt.show()
                 st.set_option('deprecation.showPyplotGlobalUse', False)
                 col2.pyplot()  
-            st.warning('Please bear in mind that not all items listed in this bibliography have an abstract. Therefore, this wordcloud should not be considered as authoritative.')
+            st.warning('Please bear in mind that not all items listed in this bibliography have an abstract.')
 
             st.write('---')
             st.subheader('Entities')
