@@ -60,8 +60,7 @@ try:
     choice = st.radio('Display dashboard by using: ', ('Group library link', 'Group library ID'))
 
     if choice == 'Group library link':
-        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group)')
-        st.caption('Try this as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
+        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try this as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
         library_id = st.text_input('Write the group library link: ')
         df = pd.DataFrame({'link': [library_id]})
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
