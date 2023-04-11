@@ -295,6 +295,21 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_abstract = df_abstract.rename(columns={'Abstract':'Text'})
         df_one = pd.concat([df_title, df_abstract], ignore_index=True)
         df_one['Text'] = df_one['Text'].fillna('')
+        df_one = pd.concat([df_one[['Text']], df_one['Text'].apply(extract_entities)], axis=1)
+        df_one = df_one.explode('GPE').reset_index(drop=True)
+        df_one = df_one.explode('ORG').reset_index(drop=True)
+        df_one = df_one.explode('PERSON').reset_index(drop=True)
+
+        df_one_g = df_one.copy()
+        df_one_g = df_one[['Text', 'GPE']]
+        # df_one_g = df_one_g.fillna('')
+        df_one_g = df_one_g.drop_duplicates(subset=['Text', 'GPE'])
+        gpe_counts = df_one_g['GPE'].value_counts().reset_index()
+        gpe_counts.columns = ['GPE', 'count']
+        gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
+        gpe_counts.sort_values('count', ascending=False, inplace=True)
+        gpe_counts = gpe_counts.reset_index(drop=True)
+        gpe_counts.head(15)
         
     else:
         st.error('Write Zotero library ID')
