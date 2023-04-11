@@ -245,7 +245,9 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
                 if non_proper in title:
                     found_countries[proper] = found_countries.get(proper, 0) + title.count(non_proper)
         df_countries = pd.DataFrame({'Country': list(found_countries.keys()), 'Count': list(found_countries.values())})
-        df_countries
+        
+        if df_countries.empty:
+            st.write('bos')
 
         fig = px.choropleth(df_countries, locations='Country', locationmode='country names', color='Count', 
                     title='Country mentions in titles', color_continuous_scale='Viridis',
