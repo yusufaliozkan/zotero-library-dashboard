@@ -265,7 +265,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             st.plotly_chart(fig, use_container_width=True) 
 
         st.write('---')
-        st.subheader('Named Entity Recognition analysis')
+        st.subheader('Entities')
+        st.caption('This part uses [NER](https://en.wikipedia.org/wiki/Named-entity_recognition)')
         nltk.download('punkt')
         nltk.download('averaged_perceptron_tagger')
         nltk.download('maxent_ne_chunker')
