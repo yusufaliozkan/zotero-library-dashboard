@@ -220,6 +220,7 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             col2.plotly_chart(fig, use_container_width = True)
 
         st.write('---')
+        st.subheader('Countries mentioned in titles')
         country_map = {
             'british': 'UK',
             'great britain': 'UK',
