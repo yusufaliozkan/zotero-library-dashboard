@@ -40,7 +40,7 @@ with st.sidebar:
     st.sidebar.markdown("# Zotero library dashboard")
     with st.expander('About'):
         st.write('''
-        This app shows dashboard of Zotero group libraries. Enter the group library link or ID and click 'Display dashboard' to see visuals of the library.
+        This app shows a dashboard of Zotero group libraries. Enter the group library link or ID and click 'Display dashboard' to see visuals of the library.
         ''')
 
         st.write('This app was built and is managed by [Yusuf Ozkan](https://www.kcl.ac.uk/people/yusuf-ali-ozkan) | [Twitter](https://twitter.com/yaliozkan) | [LinkedIn](https://www.linkedin.com/in/yusuf-ali-ozkan/) | [ORCID](https://orcid.org/0000-0002-3098-275X) | [GitHub](https://github.com/YusufAliOzkan)')
@@ -465,3 +465,11 @@ try:
 
 except pyzotero.zotero_errors.HTTPError as e:
     st.error("This doesn't look like the correct link or ID. Also, the libary may not be public. In that case, this app won't be able to display dashboard.".format(e))
+
+components.html(
+"""
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" 
+src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />
+© 2022 All rights reserved. This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+"""
+)  
