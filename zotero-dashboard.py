@@ -305,8 +305,8 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_one_g = df_one[['Text', 'GPE']]
         df_one_g = df_one_g.drop_duplicates(subset=['Text', 'GPE'])
         gpe_counts = df_one_g['GPE'].value_counts().reset_index()
-        gpe_counts
         gpe_counts.columns = ['GPE', 'count']
+        gpe_counts
         gpe_counts = gpe_counts.groupby('GPE').sum().reset_index()
         gpe_counts.sort_values('count', ascending=False, inplace=True)
         gpe_counts = gpe_counts.reset_index()
