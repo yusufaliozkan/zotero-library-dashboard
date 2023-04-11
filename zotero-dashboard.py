@@ -340,7 +340,6 @@ try:
                 st.set_option('deprecation.showPyplotGlobalUse', False)
                 col1.pyplot() 
             with col2:
-                st.warning('Please bear in mind that not all items listed in this bibliography have an abstract. Therefore, this wordcloud should not be considered as authoritative. The number of items that have an abstract is ' + str(len(df_abs_no))+'.')
                 df_list_abstract = [item for sublist in listdf_abstract for item in sublist]
                 string = pd.Series(df_list_abstract).str.cat(sep=' ')
                 wordcloud_texts = string
@@ -354,6 +353,7 @@ try:
                 plt.show()
                 st.set_option('deprecation.showPyplotGlobalUse', False)
                 col2.pyplot() 
+            st.warning('Please bear in mind that not all items listed in this bibliography have an abstract. Therefore, this wordcloud should not be considered as authoritative. The number of items that have an abstract is ' + str(len(df_abs_no))+'.')
 
             st.write('---')
             st.subheader('Entities')
