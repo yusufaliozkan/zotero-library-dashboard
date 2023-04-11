@@ -343,6 +343,17 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         person_counts.sort_values('count', ascending=False, inplace=True)
         person_counts = person_counts.reset_index(drop=True)
         person_counts
+
+        df_one_o = df_one.copy()
+        df_one_o = df_one[['Text', 'ORG']]
+        # df_one_p = df_one_g.fillna('')
+        df_one_o = df_one_o.drop_duplicates(subset=['Text', 'ORG'])
+        org_counts = df_one_o['ORG'].value_counts().reset_index()
+        org_counts.columns = ['ORG', 'count']
+        org_counts = org_counts.groupby('ORG').sum().reset_index()
+        org_counts.sort_values('count', ascending=False, inplace=True)
+        org_counts = org_counts.reset_index(drop=True)
+        org_counts
         
     else:
         st.error('Write Zotero library ID')
