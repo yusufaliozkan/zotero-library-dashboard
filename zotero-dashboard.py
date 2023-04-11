@@ -217,5 +217,32 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
             fig.update_layout(title={'text':'Top 15 Publishers', 'y':0.95, 'x':0.4, 'yanchor':'top'})
             col2.plotly_chart(fig, use_container_width = True)
 
+        st.write('---')
+        country_map = {
+            'british': 'UK',
+            'great britain': 'UK',
+            'UK' : 'UK', 
+            'america' : 'United States',
+            'United States of America' : 'United States',
+            'Soviet Union': 'Russia', 
+            'american' : 'United States',
+            'United States' : 'United States',
+            'russian' : 'Russia'
+            # Add more mappings as needed
+        }
+
+        found_countries = {}
+        for i, row in df.iterrows():
+            title = str(row['Title']).lower()
+            for country in pycountry.countries:
+                name = country.name.lower()
+                if name in title or (name + 's') in title:  # Check for singular and plural forms of country names
+                    proper_name = country.name
+                    found_countries[proper_name] = found_countries.get(proper_name, 0) + 1
+            for non_proper, proper in country_map.items():
+                if non_proper in title:
+                    found_countries[proper] = found_countries.get(proper, 0) + title.count(non_proper)
+        df_countries = pd.DataFrame({'Country': list(found_countries.keys()), 'Count': list(found_countries.values())})
+        df_countries
     else:
         st.error('Write Zotero library ID')
