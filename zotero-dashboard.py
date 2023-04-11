@@ -352,7 +352,7 @@ try:
                 plt.axis("off")
                 plt.show()
                 st.set_option('deprecation.showPyplotGlobalUse', False)
-                col2.pyplot() 
+                col2.pyplot()  
             st.warning('Please bear in mind that not all items listed in this bibliography have an abstract. Therefore, this wordcloud should not be considered as authoritative. The number of items that have an abstract is ' + str(len(df_abs_no))+'.')
 
             st.write('---')
