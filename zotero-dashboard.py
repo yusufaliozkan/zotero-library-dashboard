@@ -248,10 +248,10 @@ with st.spinner('Creating dashboard. This may take a while if the library contai
         df_countries
 
         fig = px.choropleth(df_countries, locations='Country', locationmode='country names', color='Count', 
-                            title='Country mentions in titles', color_continuous_scale='Viridis',
-                            width=1100, height=700) # Adjust the size of the map here
-
+                    title='Country mentions in titles', color_continuous_scale='Viridis',
+                    width=900, height=700) # Adjust the size of the map here
         # Display the map
         fig.show()
+        col1.plotly_chart(fig, use_container_width=True) 
     else:
         st.error('Write Zotero library ID')
