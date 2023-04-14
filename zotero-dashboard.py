@@ -58,7 +58,7 @@ with st.sidebar:
     with st.expander('Source code'):
         st.info('''
         Source code of this app is available [here](https://github.com/YusufAliOzkan/zotero-library-dashboard).
-        ''')
+        ''') 
 
 # Connecting Zotero with API
 # library_id = '2514686'
