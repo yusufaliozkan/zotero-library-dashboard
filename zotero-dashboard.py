@@ -82,10 +82,13 @@ try:
             st.caption('Write 2514686 as an example.')
             library_type = 'group'
     
-    else:
+    elif choice == 'Personal library':
         library_id = st.text_input('Personal library ID: ')
         api_key = st.text_input('Zotero API key: ')
         library_type = 'user'
+
+    else:
+        pass
 
     # api_key = '' # api_key is only needed for private groups and libraries
 
