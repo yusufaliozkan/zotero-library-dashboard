@@ -63,7 +63,7 @@ with st.sidebar:
 # Connecting Zotero with API
 # library_id = '2514686'
 try:
-    choice = st.radio('Type of the library: ', ('Group library', 'Personal library'))
+    choice = st.radio('Type of the library: ', ('None', 'Group library', 'Personal library'))
 
     if choice == 'Group library':
 
