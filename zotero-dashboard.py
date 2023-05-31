@@ -63,24 +63,20 @@ with st.sidebar:
 # Connecting Zotero with API
 # library_id = '2514686'
 try:
-    choice = st.radio('Type of the library: ', ('Group library', 'Personal library'))
+    choice = st.radio('Type of the library: ', ('Group library (use group library link)', 'Group library (use group library id)', 'Personal library'))
 
-    if choice == 'Group library':
+    if choice == 'Group library (use group library link)':
+        st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try the following link as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
+        library_id = st.text_input('Group library link: ')
+        df = pd.DataFrame({'link': [library_id]})
+        library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
+        library_type = 'group'
 
-        choice2 = st.radio('Display dashboard by using: ', ('Group library link', 'Group library ID'))
-
-        if choice2 == 'Group library link':
-            st.caption('Search Zotero group libraries [here](https://www.zotero.org/search/type/group) or try the following link as an example: https://www.zotero.org/groups/2514686/intelligence_bibliography')
-            library_id = st.text_input('Group library link: ')
-            df = pd.DataFrame({'link': [library_id]})
-            library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
-            library_type = 'group'
-
-        else: 
-            library_id = st.text_input('Group library id: ')
-            library_id = library_id.replace(' ', '')
-            st.caption('Write 2514686 as an example.')
-            library_type = 'group'
+    elif choice == 'Group library (use group library id)': 
+        library_id = st.text_input('Group library id: ')
+        library_id = library_id.replace(' ', '')
+        st.caption('Write 2514686 as an example.')
+        library_type = 'group'
     
     else:
         library_id = st.text_input('Personal library ID: ')
