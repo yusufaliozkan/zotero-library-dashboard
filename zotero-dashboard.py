@@ -77,6 +77,9 @@ try:
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
         library_type = 'group'
+    
+    else:
+        library_id = st.text_input('Personal library ID: ')
 
     api_key = '' # api_key is only needed for private groups and libraries
 
