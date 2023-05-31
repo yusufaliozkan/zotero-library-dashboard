@@ -72,7 +72,7 @@ try:
         library_id = df['link'].str.extract(r'groups/(\d+)/').iloc[0, 0]
         library_type = 'group'
 
-    if choice == 'Group library ID': 
+    elif choice == 'Group library ID': 
         library_id = st.text_input('Group library id: ')
         library_id = library_id.replace(' ', '')
         st.caption('Write 2514686 as an example.')
