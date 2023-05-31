@@ -124,7 +124,7 @@ try:
 
             lib_name = df.iloc[:,0].values[0]
             lib_link = df.iloc[0,1]
-            st.subheader("'"+lib_name + " Zotero "+ library_type + " library dashboard")
+            st.subheader("'"+lib_name + "' Zotero "+ library_type + " library dashboard")
             st.write('Link to library: ' + lib_link)
 
 
