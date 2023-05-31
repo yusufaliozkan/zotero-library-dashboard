@@ -83,7 +83,7 @@ try:
         api_key = st.text_input('Zotero API key: ')
         library_type = 'user'
 
-    api_key = '' # api_key is only needed for private groups and libraries
+    # api_key = '' # api_key is only needed for private groups and libraries
 
     # Bringing recently changed items 
 
