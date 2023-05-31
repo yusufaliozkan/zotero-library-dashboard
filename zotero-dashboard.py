@@ -63,7 +63,7 @@ with st.sidebar:
 # Connecting Zotero with API
 # library_id = '2514686'
 try:
-    choice = st.radio('Type of the library: ', ('None', 'Group library', 'Personal library'))
+    choice = st.selectbox('Type of the library: ', ('Group library', 'Personal library'))
 
     if choice == 'Group library':
 
@@ -82,13 +82,11 @@ try:
             st.caption('Write 2514686 as an example.')
             library_type = 'group'
     
-    elif choice == 'Personal library':
+    else:
         library_id = st.text_input('Personal library ID: ')
         api_key = st.text_input('Zotero API key: ')
         library_type = 'user'
 
-    else:
-        pass
 
     # api_key = '' # api_key is only needed for private groups and libraries
 
