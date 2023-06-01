@@ -79,7 +79,7 @@ try:
         library_type = 'group'
     
     else:
-        library_id = st.text_input('Personal library ID: (Find it [here](https://www.zotero.org/settings/keys) in the "Your userID for use in API calls")')
+        library_id = st.text_input('Personal library ID: (Find it [here](https://www.zotero.org/settings/keys). Check the "Your userID for use in API calls" section.)')
         api_key = st.text_input("Zotero API key: (Find it [here](https://www.zotero.org/settings/keys/new). Create a new private key if you don't have an existing one.) ")
         library_type = 'user'
 
