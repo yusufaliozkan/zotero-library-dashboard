@@ -80,7 +80,7 @@ try:
     
     else:
         library_id = st.text_input('Personal library ID: ')
-        api_key = st.text_input('Zotero API key: ')
+        api_key = st.text_input('Zotero [API key](https://www.zotero.org/settings/keys/new): ')
         library_type = 'user'
 
 
