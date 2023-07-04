@@ -336,8 +336,8 @@ try:
             listdf_abstract = df['lemma_abstract']
 
             st.subheader('Wordcloud')
-            wordcloud_opt = st.radio('Wordcloud of:', ('Titles', 'Abstracts'))
-            if wordcloud_opt=='Titles':
+            col1, col2 = st.columns(2)
+            with col1:
                 df_list = [item for sublist in listdf for item in sublist]
                 string = pd.Series(df_list).str.cat(sep=' ')
                 wordcloud_texts = string
@@ -350,9 +350,8 @@ try:
                 plt.axis("off")
                 plt.show()
                 st.set_option('deprecation.showPyplotGlobalUse', False)
-                st.pyplot() 
-            else:
-                st.warning('Please bear in mind that not all items listed in this bibliography have an abstract. Therefore, this wordcloud should not be considered as authoritative. The number of items that have an abstract is ' + str(len(df_abs_no))+'.')
+                col1.pyplot() 
+            with col2:
                 df_list_abstract = [item for sublist in listdf_abstract for item in sublist]
                 string = pd.Series(df_list_abstract).str.cat(sep=' ')
                 wordcloud_texts = string
@@ -365,7 +364,8 @@ try:
                 plt.axis("off")
                 plt.show()
                 st.set_option('deprecation.showPyplotGlobalUse', False)
-                st.pyplot() 
+                col2.pyplot()  
+            st.warning('Please bear in mind that not all items listed in this bibliography have an abstract.')
 
             st.write('---')
             st.subheader('Entities')
