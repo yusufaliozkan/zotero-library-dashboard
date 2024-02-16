@@ -5,7 +5,7 @@ from IPython.display import HTML
 import streamlit.components.v1 as components
 import numpy as np
 import altair as alt
-from pandas.io.json import json_normalize
+# from pandas.io.json import json_normalize
 from datetime import date, timedelta  
 import datetime
 from streamlit_extras.switch_page_button import switch_page
