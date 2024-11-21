@@ -165,14 +165,18 @@ try:
             st.subheader('Publications by type')
             col1, col2 = st.columns(2)
             with col1:
-                df_types = pd.DataFrame(df['Publication type'].value_counts())
-                df_types = df_types.sort_values(['Publication type'], ascending=[False])
-                df_types=df_types.reset_index()
-                df_types = df_types.rename(columns={'index':'Publication type','Publication type':'Count'})
-
+                # Get value counts and reset index
+                df_types = pd.DataFrame(df['Publication type'].value_counts()).reset_index()
+                
+                # Rename columns for clarity
+                df_types.columns = ['Publication type', 'Count']
+                
+                # Create pie chart
                 fig = px.pie(df_types, values='Count', names='Publication type')
-                fig.update_layout(title={'text':'Item types', 'y':0.95, 'x':0.45, 'yanchor':'top'})
-                col1.plotly_chart(fig, use_container_width = True)
+                fig.update_layout(title={'text': 'Item types', 'y': 0.95, 'x': 0.45, 'yanchor': 'top'})
+                
+                # Display the chart
+                col1.plotly_chart(fig, use_container_width=True)
             with col2:
                 fig = px.bar(df_types, x='Publication type', y='Count', color='Publication type')
                 fig.update_layout(
