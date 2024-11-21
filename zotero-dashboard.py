@@ -15,6 +15,8 @@ import re
 import matplotlib.pyplot as plt
 import nltk
 # nltk.download('all')
+nltk.download('wordnet')
+nltk.download('omw-1.4')  # Optional: for WordNet synonyms and examples
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 from wordcloud import WordCloud
