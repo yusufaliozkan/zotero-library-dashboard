@@ -245,6 +245,7 @@ try:
                 df_publisher = df_publisher.reset_index()
                 df_publisher = df_publisher.rename(columns={'index':'Publisher','Publisher':'Count'})
                 df_publisher = df_publisher.fillna('')
+                df_publisher
 
                 fig = px.bar(df_publisher.head(15), x='Publisher', y='Count', color='Publisher')
                 fig.update_layout(
