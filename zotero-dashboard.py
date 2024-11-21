@@ -225,9 +225,8 @@ try:
                 df_journal = pd.DataFrame(df_journal['Journal'].value_counts())
                 df_journal = df_journal.sort_values(['Journal'], ascending=[False])
                 df_journal = df_journal.reset_index()
-                df_journal = df_journal.rename(columns={'index':'Journal','Journal':'Count'})
+                df_journal.columns = ['Journal', 'Count'] 
                 df_journal = df_journal.dropna()
-                df_journal
                 df_journal['Journal'] = df_journal['Journal'].str[:50]
 
                 fig = px.bar(df_journal.head(15), x='Journal', y='Count', color='Journal')
