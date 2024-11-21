@@ -191,20 +191,27 @@ try:
             st.subheader('Publications overtime')
             col1, col2 = st.columns(2)
             with col1:
-                df_year = df['Date year'].value_counts()
-                df_year = df_year.reset_index()
-                df_year
-                df_year=df_year.rename(columns={'index':'Publication year','Date year':'Count'})
-                df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
-                df_year=df_year.sort_values(by='Publication year', ascending=True)
-                df_year=df_year.reset_index(drop=True)
+                # Rename columns explicitly without 'index'
+                df_year = df_year.rename(columns={'Date year': 'Publication year', 'count': 'Count'})
+                
+                # Drop rows where 'Publication year' is 'No date'
+                df_year = df_year[df_year['Publication year'] != 'No date']
+                
+                # Sort by 'Publication year'
+                df_year = df_year.sort_values(by='Publication year', ascending=True).reset_index(drop=True)
+                
+                # Create the bar chart
                 fig = px.bar(df_year, x='Publication year', y='Count')
                 fig.update_layout(
                     autosize=False,
                     width=1200,
-                    height=600,)
-                fig.update_layout(title={'text':'All items in the library by publication year', 'y':0.95, 'x':0.5, 'yanchor':'top'})
-                col1.plotly_chart(fig, use_container_width = True)
+                    height=600,
+                    title={'text': 'All items in the library by publication year', 'y': 0.95, 'x': 0.5, 'yanchor': 'top'}
+                )
+                
+                # Display the chart
+                col1.plotly_chart(fig, use_container_width=True)
+
 
             with col2:
                 df_year['Sum'] = df_year['Count'].cumsum()
