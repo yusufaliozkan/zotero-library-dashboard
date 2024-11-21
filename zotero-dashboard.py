@@ -195,7 +195,6 @@ try:
             with col1:
                 df_year = df['Date year'].value_counts()
                 df_year = df_year.reset_index()
-                df_year
                 df_year = df_year.rename(columns={'Date year': 'Publication year', 'count': 'Count'})
                 df_year.drop(df_year[df_year['Publication year']== 'No date'].index, inplace = True)
                 df_year=df_year.sort_values(by='Publication year', ascending=True)
