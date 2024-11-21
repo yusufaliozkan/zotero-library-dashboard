@@ -243,7 +243,7 @@ try:
                 df_publisher = pd.DataFrame(df['Publisher'].value_counts())
                 df_publisher = df_publisher.sort_values(['Publisher'], ascending=[False])
                 df_publisher = df_publisher.reset_index()
-                df_publisher = df_publisher.rename(columns={'index':'Publisher','Publisher':'Count'})
+                df_publisher.columns = ['Publisher', 'Count']
                 df_publisher = df_publisher.fillna('')
                 df_publisher
 
