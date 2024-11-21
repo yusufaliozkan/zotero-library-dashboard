@@ -14,7 +14,7 @@ import numpy as np
 import re
 import matplotlib.pyplot as plt
 import nltk
-# nltk.download('all')
+nltk.download('all')
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 from wordcloud import WordCloud
@@ -245,7 +245,6 @@ try:
                 df_publisher = df_publisher.reset_index()
                 df_publisher.columns = ['Publisher', 'Count']
                 df_publisher = df_publisher.fillna('')
-                df_publisher
 
                 fig = px.bar(df_publisher.head(15), x='Publisher', y='Count', color='Publisher')
                 fig.update_layout(
